@@ -61,7 +61,7 @@ EOF
 
 gen_data() {
     seq $FIRST_PORT $LAST_PORT | while read port; do
-        echo "Thuan$port/$(random)/$IP4/$port/$(gen64 $IP6)"
+        echo "Thuan0$port/$(random)/$IP4/$port/$(gen64 $IP6)"
     done
 }
 
@@ -91,8 +91,8 @@ IP6=$(curl -6 -s icanhazip.com | cut -f1-4 -d':')
 
 echo "Internal ip = ${IP4}. Exteranl sub for ip6 = ${IP6}"
 
-FIRST_PORT=30000
-LAST_PORT=30200
+FIRST_PORT=3000
+LAST_PORT=3200
 
 gen_data >$WORKDIR/data.txt
 gen_iptables >$WORKDIR/boot_iptables.sh
